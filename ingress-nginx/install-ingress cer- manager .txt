@@ -1,0 +1,58 @@
+Cert Manager Installation 
+
+1-  kubectl create namespace cert-manager
+
+2-  helm repo add jetstack https://charts.jetstack.io
+
+3-  helm repo update
+
+4-  kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.1/cert-manager.crds.yaml
+
+5-  helm install \
+cert-manager jetstack/cert-manager \
+--namespace cert-manager \
+--version v1.9.1
+
+6-  Verify that the cert-manager is deployed correctly.
+   
+    kubectl get pods --namespace cert-manager -o wide
+
+7-  Create ClusterIssuer with name of "tls-cluster-issuer-prod.yml"
+
+
+    Paste the text below into the "tls-cluster-issuer-prod.yml" file.
+
+"""""""*****
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+  namespace: cert-manager
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: callahan@clarusway.com
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    # Enable the HTTP-01 challenge provider
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+
+"""""""*****
+
+
+8-    create cluster-issuer --->>>>          kubectl apply -f k8s/tls-cluster-issuer-prod.yml
+
+
+9-   Check if ClusterIssuer resource is created. --->>>>   kubectl get clusterissuers letsencrypt-prod -n cert-manager -o wide  
+
+
+nginx ingress installation 
+
+  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.4.0/deploy/static/provider/aws/deploy.yaml
+
