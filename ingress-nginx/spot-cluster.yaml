@@ -1,0 +1,48 @@
+# spot-cluster.yaml
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: spot-cluster
+  region: us-east-1
+  version: '1.23'
+  # tags:
+  #   karpenter.sh/discovery: cluster-with-karpenter
+
+
+# iam:
+#   withOIDC: true
+
+# karpenter:
+#   version: '0.16.0'
+#   createServiceAccount: true # default is false
+
+
+managedNodeGroups:
+  - name: spot
+    instanceTypes: ["t3.medium"]
+    spot: true
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 3
+    volumeSize: 66
+    
+  # volumeType: gp2
+  # ami: ami-05ecac759c81e0b0c
+  # amiFamily: AmazonLinux2
+  # availabilityZones: ["us-west-2a", "us-west-2b"]
+    # instancesDistribution:
+    #   maxPrice: 0.0126
+    #   instanceTypes: ["t3.small", "t3.medium"]
+
+
+# `instanceTypes` defaults to [`m5.large`]
+# - name: spot-2
+#   spot: true
+
+# On-Demand instances
+# - name: on-demand
+#   instanceTypes: ["c3.large", "c4.large", "c5.large"]
+# eksctl create cluster --spot --instance-types=c3.large,c4.large,c5.large
+# eksctl create cluster -f spot-cluster.yaml   -->> enter
