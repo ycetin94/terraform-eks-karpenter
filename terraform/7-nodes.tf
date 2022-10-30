@@ -30,7 +30,7 @@ resource "aws_iam_role_policy_attachment" "amazon-ec2-container-registry-read-on
 
 resource "aws_eks_node_group" "private-nodes" {
   cluster_name    = aws_eks_cluster.cluster.name
-  version         = "1.22"
+  version         = "1.23"
   node_group_name = "private-nodes"
   node_role_arn   = aws_iam_role.nodes.arn
 
@@ -40,10 +40,10 @@ resource "aws_eks_node_group" "private-nodes" {
   ]
 
   capacity_type  = "SPOT"     #  "ON_DEMAND"
-  instance_types = ["t3.small"]
+  instance_types = ["t3.medium"]
 
   scaling_config {
-    desired_size = 1
+    desired_size = 2
     max_size     = 10
     min_size     = 0
   }
