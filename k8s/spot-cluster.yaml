@@ -26,7 +26,7 @@ managedNodeGroups:
     minSize: 2
     maxSize: 4
     desiredCapacity: 3
-    volumeSize: 66
+    volumeSize: 50
     
   # volumeType: gp2
   # ami: ami-05ecac759c81e0b0c
