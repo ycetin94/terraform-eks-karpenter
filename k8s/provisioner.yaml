@@ -13,11 +13,11 @@ spec:
     # Include general purpose instance families
     - key: karpenter.k8s.aws/instance-family
       operator: In
-      values: [t3a.large, t3.medium, t3a.xlarge]
+      values: [t3, c5, m5 ]
     # Exclude small instance sizes
     - key: karpenter.k8s.aws/instance-size
       operator: NotIn
-      values: [nano, micro, small, 2xlarge, 4xlarge, 8xlarge, 12xlarge, 16xlarge, 24xlarge,]
+      values: [nano, micro, small,  8xlarge, 9xlarge,12xlarge, 16xlarge, 24xlarge,]
     - key: karpenter.sh/capacity-type
       operator: In
       values: ["spot"]   
