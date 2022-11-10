@@ -1,4 +1,4 @@
-first lets create eks cluster with below eksctl commands line (cluster name = demo)  
+firstly lets create eks cluster with below eksctl commands line (cluster name = demo)  
 
 
 -*******
