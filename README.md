@@ -18,4 +18,7 @@ If you get a karpenter helm chart error during terraform installation, run the "
 
 
 
+4.Step ---***
 
+
+When the terraform eks installation is complete, check that the karpenter pod is working with the command "kubectl get po -A".
