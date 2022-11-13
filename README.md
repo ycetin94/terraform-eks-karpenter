@@ -5,7 +5,8 @@ As a prerequisite, you must have helm, aws cli, kubectl and terraform installed 
 1-Step ---***
 firstly install karpenter hell chart on yout local system
 
-helm repo add karpenter https://charts.karpenter.sh/
+helm repo add karpenter https://charts.karpenter.sh  
+
 helm repo update
 
 2.Step ---***
