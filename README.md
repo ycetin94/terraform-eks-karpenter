@@ -26,9 +26,9 @@ When the terraform eks installation is complete, check that the karpenter pod is
 
 
 5.step---***
-instaii argocd manually with     "kubectl create namespace argocd"      ---and--
+install argocd manually with     "kubectl create namespace argocd"      ---and--
 
-"kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"  commands.
+"kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"    commands.
 
 
 ---> Get agrgo cd initial password with 
