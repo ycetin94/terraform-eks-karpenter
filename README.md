@@ -22,16 +22,13 @@ If you get a karpenter helm chart error during terraform installation, run the "
 4.Step ---***
 
 
-When the terraform eks installation is complete, check that the karpenter pod is working with the command "kubectl get po -A".
+When the terraform eks installation is complete, check that the karpenter and ebs-csi pods are working with the command "kubectl get po -A".
 
 
 5.step---***
-install argocd manually with     " kubectl create namespace argocd "      ---and--
-
-"  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml  "    commands.
 
 
----> Get agrgo cd initial password with 
+--->  argocd insalled via terraform so   Get agrgo cd initial password with 
 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo  
 
