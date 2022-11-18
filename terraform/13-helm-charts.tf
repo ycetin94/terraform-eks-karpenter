@@ -41,14 +41,10 @@ resource "helm_release" "argo_cd" {
     name  = "server.ingress.pathType"
     value = "Prefix"
   }
-  # set {
-  #   name  = "server.ingress.paths"
-  #   value =   "{/argocd(.*)}" # "[\"/argocd\"]"                           #   "argocd.yusuf-cetin.com"
-  #     # 
-  # }
+ 
 
   # set {
-  #   name = "config.secret.argocdServerAdminPassword"
+  #   name = "configs.secret.argocdServerAdminPassword"
   #   value = "yusuf.80"
   # }
 }
